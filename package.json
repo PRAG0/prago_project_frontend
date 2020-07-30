@@ -6,10 +6,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "immer": "^6.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-scroll-horizontal": "^1.6.4",
+    "react-spring": "^8.0.27",
+    "react-use-gesture": "^7.0.15",
+    "redux-actions": "^2.6.5",
+    "styled-components": "^5.1.1"
   },
+  "proxy": "http://192.168.137.1:8080/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

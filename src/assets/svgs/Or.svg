@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <g id="그룹_185" data-name="그룹 185" transform="translate(-1293.5 -626)">
+    <line id="선_1" data-name="선 1" x2="200" transform="translate(1293.5 665.5)" fill="none" stroke="#61c287" stroke-width="5"/>
+    <circle id="타원_1" data-name="타원 1" cx="40" cy="40" r="40" transform="translate(1355 626)" fill="#65c98c"/>
+    <text id="or" transform="translate(1379 673)" fill="#fff" font-size="30" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">or</tspan></text>
+  </g>
+</svg>
