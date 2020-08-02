@@ -9,7 +9,7 @@ client.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 export const token = (AUTH_TOKEN) => {
   console.log(AUTH_TOKEN)
-  client.defaults.headers.common['Authorization'] = "Bearer "+AUTH_TOKEN;
+  client.defaults.headers.common['Authorization'] = "Token "+AUTH_TOKEN;
 }
 /*
   글로벌 설정 예시:

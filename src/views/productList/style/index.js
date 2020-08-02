@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 460px;
+  height: 500px;
   border-radius: 20px;
   background: white;
   background: rgba(255, 255, 255, 0.8);
@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
 `;
 
 export const List = styled.div`
+  height: 100%;
   width: 100%;
   overflow-x: scroll;
   -ms-overflow-style: none;

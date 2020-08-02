@@ -4,6 +4,8 @@ import * as S from "./style";
 import Info from "./Info";
 import Header from "../../components/header";
 import Sidebar from "../../components/sidebar";
+import MyListContainer from '../../containers/MyListContainer';
+
 const MyPage = () => {
   const [info, setInfo] = useState(true);
 
@@ -18,6 +20,7 @@ const MyPage = () => {
         </S.Menu>
         {info ? 
         <>
+        <MyListContainer />
           {/* <ProductList title="내기 찜한 목록"/> */}
         </>
         :

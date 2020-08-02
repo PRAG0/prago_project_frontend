@@ -8,15 +8,24 @@ import heartIcon from "../../assets/icons/heart.png";
 
 import {Link} from 'react-router-dom'
 import { logout } from "../../redux/modules/auth";
-
+import {useHistory} from 'react-router-dom'
 const Sidebar = () => {
+    const history = useHistory();
     const dispatch = useDispatch()
     const { auth } = useSelector(({ auth }) => ({
         auth: auth.auth,
       }));
 
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logout());
+        localStorage.clear();
+        history.push('/');
+    }
+
+    const handleMove = (top, ev) => {
+        ev.preventDefault();
+        history.push('/')
+        window.scrollTo({top: top, left:0, behavior:'auto'});
     }
     
     return (
@@ -29,9 +38,9 @@ const Sidebar = () => {
             }
 
             <S.QuickMove>
-                <div onClick={() => {window.scrollTo({top:0, left:0, behavior:'auto'});}}><img width="90" src={saleIcon} alt="핫딜 아이콘" /> </div>
-                <div onClick={() => {window.scrollTo({top:500, left:0, behavior:'auto'});}}><img width="60" src={heartIcon} alt="찜 아이콘" /></div>
-                <div onClick={() => {window.scrollTo({top:1000, left:0, behavior:'auto'});}}><img width="80" src={starIcon} alt="추천 아이콘" /></div>
+                <div onClick={(e) => handleMove(500, e)}><img width="60" src={heartIcon} alt="찜 아이콘" /></div>
+                <div onClick={(e) => handleMove(0, e)}><img width="90" src={saleIcon} alt="핫딜 아이콘" /> </div>
+                <div onClick={(e) => handleMove(1000, e)}><img width="80" src={starIcon} alt="추천 아이콘" /></div>
             </S.QuickMove>
             <div className="auth">
             {auth ?

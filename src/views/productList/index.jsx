@@ -10,19 +10,33 @@ const ProductList = ({ title, icon, iconDescription, handleWish, handleDetail, l
         <img src={icon} alt={iconDescription}/>
         <h2>{title}</h2>
       </div>
-      <div style={{height: '360px'}}>
-        <HorizontalScroll reverseScroll>
-          {
+      <div style={{display: 'flex', height: '400px'}}>
+      {
+        (list.length > 4) ?
+          <HorizontalScroll reverseScroll>
+            {
+              list.map((item) => (
+                <Item
+                  handleDetail={handleDetail}
+                  handleWish={handleWish}
+                  key={item.index}
+                  data={{...item}}
+                />
+              ))
+            }
+            </HorizontalScroll> 
+          :
             list.map((item) => (
               <Item
                 handleDetail={handleDetail}
                 handleWish={handleWish}
                 key={item.index}
-                {...item}
+                data={{...item}}
               />
             ))
-          }
-          </HorizontalScroll>
+      }
+
+        
       </div>
     </S.Wrapper>
   );

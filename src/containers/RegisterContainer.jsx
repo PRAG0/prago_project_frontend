@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
-
 // import Login from "../views/auth/login";
 
 import { changeField, initializeForm, register } from "../redux/modules/auth";
@@ -9,6 +8,7 @@ import RegisterPage from "../pages/auth/register";
 // import { check } from "../../modules/user";
 
 const RegisterContainer = ({ history }) => {
+
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth }) => ({
@@ -63,6 +63,7 @@ const RegisterContainer = ({ history }) => {
     e.preventDefault();
     const { id, password, username } = form;
     dispatch(register({ id, password, username }));
+    
   };
 
   useEffect(() => {
@@ -72,11 +73,12 @@ const RegisterContainer = ({ history }) => {
   useEffect(() => {
     if (authError) {
       setError("로그인 실패");
+      alert("id 중복. 다른 id를 사용해주세요.");
       return;
     }
 
     if (auth) {
-      //   dispatch(check());
+      history.push('/signup');
     }
   }, [auth, authError, dispatch, user]);
 

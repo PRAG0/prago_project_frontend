@@ -7,7 +7,7 @@ const SearchList = ({list, handleDetail, handleWish}) => {
     <S.Wrapper>
       <S.Block>
         {list.map(item =>
-          <Item key={item.index} handleDetail={handleDetail} handleWish={handleWish} {...item} />
+          <Item key={item.index} handleDetail={handleDetail} handleWish={handleWish} data={{...item}} />
         )}
       </S.Block>
     </S.Wrapper>

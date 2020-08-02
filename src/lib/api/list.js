@@ -4,27 +4,27 @@ export const searchAPI = (query) =>
   client.get("/search_api/search/"+ query);
 
 export const getWishListAPI = (auth) =>
-  client.get("/search_api/wishlist/?user_id="+auth.user_id);
+  client.get("/wishlist_api/wishlist/?favor_user_id="+auth);
+
+export const putWishListAPI = (data, auth) =>
+  client.post("/wishlist_api/wishlist/", putWishDataFormat(data, auth));
 
 
-export const putWishListAPI = (data) =>
-  client.post("/search_api/wishlist/", putWishDataFormat(data));
+export const deleteWishListAPI = (data, auth) =>
+  client.delete("/wishlist_api/wishlist/"+data, {favor_user_id: auth.user_id});
 
 
-export const deleteWishListAPI = (data) =>
-  client.delete("/search_api/wishlist/", deleteWishDataFormat(data));
+export const getRecommendListAPI = () =>
+  client.get("/recommend_api/recommend-list/");
+  
+export const putWishDataFormat = (data, auth) => {
+  const sendData = new FormData();
+  sendData.append('favor_user_id', auth.user_id);
+  sendData.append('product_name', data.product_name);
+  sendData.append('product_price', data.product_price);
+  sendData.append('product_image', data.product_image);
+  sendData.append('product_site_name', data.product_site_name);
+  sendData.append('product_site_link', data.product_site_link);
 
-
-export const putWishDataFormat = (data, auth) => ({
-  user_id: auth.user_id,
-  product_name: data.product_name,
-  product_price: data.product_price,
-  product_image: data.product_image,
-  product_site_name: data.product_site_name,
-  product_site_link: data.product_site_link,
-})
-
-export const deleteWishDataFormat = (data, auth) => ({
-  user_id: auth.user_id,
-  product_site_link: data.product_site_link,
-})
+  return sendData;
+}

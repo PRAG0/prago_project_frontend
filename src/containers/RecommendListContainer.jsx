@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from "react";
 
 import {useSelector} from 'react-redux';
-import {getWishListAPI, putWishListAPI, deleteWishListAPI} from '../lib/api/list';
+import {getRecommendListAPI, putWishListAPI} from '../lib/api/list';
 
-import WishList from "../views/productList/WishList";
+import RecommendList from "../views/productList/RecommendList";
 
 import { rawData } from './tempData'
 
 
-const WishListContainer = () => {
+const RecommendListContainer = () => {
   const [list, setList] = useState([]);
   const [detail, setDetail] = useState(null);
 
@@ -27,28 +27,28 @@ const WishListContainer = () => {
       return;
     }
 
-    const index = list.findIndex(item => item.id === data.id);
+    console.log(data);
+
+    const index = list.findIndex(item => item.index === data.index);
     const selected = list[index];
     const nextList = [...list];
-    nextList[index] = {
-      ...selected,
-      like: false
-    }
-
-    deleteWishListAPI(data.id, auth).then(res => {
-      getWishListAPI(auth.user_id).then((res) => {
-        setList(res.data.map(item => ({...item, like: true})));
-          console.log(res.data);
-      }).catch(err => {alert("오류")})
+    putWishListAPI(data, auth).then(res => {
+        nextList[index] = {
+          ...selected,
+          like: true
+        }
+        setList([...nextList]);
     }).catch(err => {
-      alert("찜 제거 애러발생");
-    });
+      alert("찜 등록 애러발생");
+    })
+
   }
+
 
   useEffect(() => {
     // setList(JSON.parse(rawData));
     if(auth){
-      getWishListAPI(auth.user_id).then((res) => {
+      getRecommendListAPI().then((res) => {
         setList(res.data.map(item => ({...item, like: true})));
         console.log(res.data);
       }).catch(err => {alert("오류")})
@@ -58,9 +58,9 @@ const WishListContainer = () => {
 
   return (
     <>
-      <WishList handleWish={handleWish} handleDetail={handleDetail} list={list} detail={detail}/>
+      <RecommendList handleWish={handleWish} handleDetail={handleDetail} list={list} detail={detail}/>
     </>
   )
 }
 
-export default WishListContainer;
+export default RecommendListContainer;

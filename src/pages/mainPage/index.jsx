@@ -6,7 +6,7 @@ import ProductList from "../../views/productList";
 import {useSelector} from 'react-redux';
 import { getWishListAPI } from "../../lib/api/list";
 import WishListContainer from "../../containers/WishListContainer";
-
+import RecommendListContainer from '../../containers/RecommendListContainer'
 
 const Main = () => {
   const { auth } = useSelector(({ auth }) => ({
@@ -26,8 +26,9 @@ const Main = () => {
       <Header />
       <Sidebar />
       <WishListContainer />
-      <ProductList id="sale" title="오늘의 핫딜"  />
-      <ProductList id="heart" title="내가 찜한 것" />
+      <RecommendListContainer/>
+      <ProductList title="오늘의 핫딜"  />
+      <ProductList title= {(auth ? auth.name+"님" : "당신")+ "을 위한 추천"} />
     </S.Wrapper>
   );
 };

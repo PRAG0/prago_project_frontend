@@ -45,6 +45,7 @@ const LoginContainer = ({ history }) => {
 
     if (auth) {
       token(auth.token);
+      localStorage.setItem('user', JSON.stringify(auth));
       history.push('/');
     }
   }, [auth, authError, dispatch, user, history]);

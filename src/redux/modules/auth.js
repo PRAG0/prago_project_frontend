@@ -9,6 +9,7 @@ import * as authAPI from "../../lib/api/auth";
 const CHANGE_FIELD = "auth/CHANGE_FIELD"; 
 const INITIALIZE_FORM = "auth/INITIALIZE_FORM";
 const LOGOUT = "auth/LOGOUT";
+const TEMP_SET_AUTH = "auth/TEMP_SET_AUTH";
 
 const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes(
   "auth/REGISTER"
@@ -47,6 +48,10 @@ export const login = createAction(LOGIN, ({ id, password }) => ({
   password,
 }));
 
+
+export const tempSetAuth = createAction(TEMP_SET_AUTH, ({user_id, name}) => ({
+  user_id, name
+})) 
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
@@ -55,6 +60,7 @@ export function* authSaga() {
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(REGISTER, registerSaga);
 }
+
 
 const initialState = {
   register: {
@@ -107,6 +113,10 @@ const auth = handleActions(
     [LOGOUT]: (state) => ({
       ...state,
       auth: null,
+    }),
+    [TEMP_SET_AUTH]: (state, { payload: auth }) => ({
+      ...state,
+      auth,
     })
   },
   initialState
