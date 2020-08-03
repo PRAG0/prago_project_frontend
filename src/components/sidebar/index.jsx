@@ -38,9 +38,9 @@ const Sidebar = () => {
             }
 
             <S.QuickMove>
-                <div onClick={(e) => handleMove(500, e)}><img width="60" src={heartIcon} alt="찜 아이콘" /></div>
-                <div onClick={(e) => handleMove(0, e)}><img width="90" src={saleIcon} alt="핫딜 아이콘" /> </div>
-                <div onClick={(e) => handleMove(1000, e)}><img width="80" src={starIcon} alt="추천 아이콘" /></div>
+                <div onClick={(e) => handleMove(0, e)}><img width="60" src={heartIcon} alt="찜 아이콘" /></div>
+                {/* <div onClick={(e) => handleMove(0, e)}><img width="90" src={saleIcon} alt="핫딜 아이콘" /> </div> */}
+                <div onClick={(e) => handleMove(500, e)}><img width="80" src={starIcon} alt="추천 아이콘" /></div>
             </S.QuickMove>
             <div className="auth">
             {auth ?

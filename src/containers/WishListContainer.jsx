@@ -53,6 +53,9 @@ const WishListContainer = () => {
         console.log(res.data);
       }).catch(err => {alert("오류")})
     }
+    else {
+      setList([]);
+    }
 
   }, [auth]);
 

@@ -1,13 +1,27 @@
 import React, {useState} from "react";
 import * as S from "./style";
 // import ProductList from "../productList";
+import { useSelector } from 'react-redux'
+import { useHistory } from "react-router-dom";
 import Info from "./Info";
 import Header from "../../components/header";
 import Sidebar from "../../components/sidebar";
 import MyListContainer from '../../containers/MyListContainer';
 
+
 const MyPage = () => {
+  const history = useHistory();
   const [info, setInfo] = useState(true);
+
+  const { auth } = useSelector(({ auth }) => ({
+    auth: auth.auth,
+  }));
+  
+
+  if(!auth) {
+    alert("로그인 해주세요.")
+    history.push('/signup');
+  }
 
   return (
     <S.Wrapper>

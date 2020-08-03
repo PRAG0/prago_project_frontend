@@ -69,6 +69,7 @@ const Info = () => {
     if(auth) {
       setForm({...form, name: auth.name});
     }
+
   }, [auth]);
 
 

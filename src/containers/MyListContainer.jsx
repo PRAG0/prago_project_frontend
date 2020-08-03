@@ -6,7 +6,6 @@ import MyWishList from "../views/searchList/MyWishList";
 
 
 const MyListContainer = () => {
-
   const [list, setList] = useState([]);
   const [detail, setDetail] = useState(null);
 
@@ -19,6 +18,7 @@ const MyListContainer = () => {
   }
 
   const handleWish = (like, data) => {
+    setDetail(null);
     if(!auth) {
       alert("로그인 후 이용이 가능합니다.");
       return;
@@ -54,6 +54,9 @@ const MyListContainer = () => {
         .catch((err) => {
           alert("위시리스트 불러오기 오류");
         });
+    }
+    else {
+      setList([]);
     }
   }, []);
 

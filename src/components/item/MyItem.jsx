@@ -4,12 +4,12 @@ import * as S from './style'
 const MyItem = ({ handleDetail, handleWish, data }) => {
 
   const handleClick = (ev) => {
-    ev.preventDefault();
+    ev.stopPropagation();
     handleDetail(data)
   };
 
   const handleLike = (ev) => {
-    ev.preventDefault();
+    ev.stopPropagation();
     handleWish(data.like, data);
   }
 
@@ -18,7 +18,7 @@ const MyItem = ({ handleDetail, handleWish, data }) => {
       <img src={data.product_image} alt={data.product_name + ' 이미지'} />
       <div>
         <span>{data.product_name}</span>
-        <span onClick={handleLike} className="delete">X</span>
+        <div onClick={handleLike} className="delete">X</div>
       </div>
     </S.ItemBox>
   )

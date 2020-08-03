@@ -6,12 +6,14 @@ import roundedHeart from '../../assets/icons/roundedHeart.png'
 const Item = ({ handleDetail, handleWish, data }) => {
 
   const handleClick = (ev) => {
-    ev.preventDefault();
+   // ev.stopPropagation();
+    window.scrollTo(0, 0);
     handleDetail(data)
   };
 
   const handleLike = (ev) => {
-    ev.preventDefault();
+    // ev.preventDefault();
+    ev.stopPropagation();
     handleWish(data);
   }
 

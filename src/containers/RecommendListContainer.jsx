@@ -22,6 +22,7 @@ const RecommendListContainer = () => {
   }
 
   const handleWish = (data) => {
+
     if(!auth) {
       alert("로그인 후 이용이 가능합니다.");
       return;
@@ -41,20 +42,18 @@ const RecommendListContainer = () => {
     }).catch(err => {
       alert("찜 등록 애러발생");
     })
-
   }
 
 
   useEffect(() => {
     // setList(JSON.parse(rawData));
-    if(auth){
-      getRecommendListAPI().then((res) => {
-        setList(res.data.map(item => ({...item, like: true})));
-        console.log(res.data);
-      }).catch(err => {alert("오류")})
-    }
 
-  }, [auth]);
+    getRecommendListAPI().then((res) => {
+      setList(res.data.map(item => ({...item, like: false})));
+      console.log(res.data);
+    }).catch(err => {alert("오류")})
+
+  }, []);
 
   return (
     <>

@@ -6,10 +6,10 @@ import roundedHeart from '../../assets/icons/roundedHeart.png'
 const Item = ({ handleDetail, handleWish, data }) => {
 
   const handleClick = (ev) => {
-    ev.preventDefault();
+    ev.stopPropagation();
     handleDetail({
       index: data.index,
-      product_imgae: data.recommend_product_imgage,
+      product_image: data.recommend_product_image,
       product_name: data.recommend_product_name,
       product_price: data.recommend_product_price,
       product_site_link: data.recommend_product_site_link,
@@ -18,10 +18,10 @@ const Item = ({ handleDetail, handleWish, data }) => {
   };
 
   const handleLike = (ev) => {
-    ev.preventDefault();
+    ev.stopPropagation();
     handleWish({
       index: data.index,
-      product_imgae: data.recommend_product_imgage,
+      product_image: data.recommend_product_image,
       product_name: data.recommend_product_name,
       product_price: data.recommend_product_price,
       product_site_link: data.recommend_product_site_link,

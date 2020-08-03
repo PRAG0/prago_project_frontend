@@ -7,6 +7,7 @@ import {useSelector} from 'react-redux';
 import { getWishListAPI } from "../../lib/api/list";
 import WishListContainer from "../../containers/WishListContainer";
 import RecommendListContainer from '../../containers/RecommendListContainer'
+import UnWishList from "../../views/productList/UnWishList";
 
 const Main = () => {
   const { auth } = useSelector(({ auth }) => ({
@@ -25,10 +26,11 @@ const Main = () => {
     <S.Wrapper>
       <Header />
       <Sidebar />
-      <WishListContainer />
+      {auth ? <WishListContainer />
+      : <UnWishList />}
       <RecommendListContainer/>
-      <ProductList title="오늘의 핫딜"  />
-      <ProductList title= {(auth ? auth.name+"님" : "당신")+ "을 위한 추천"} />
+      {/* <ProductList title="오늘의 핫딜"  /> */}
+      {/* <ProductList title= {(auth ? auth.name+"님" : "당신")+ "을 위한 추천"} /> */}
     </S.Wrapper>
   );
 };
