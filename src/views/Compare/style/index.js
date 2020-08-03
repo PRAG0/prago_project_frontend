@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Product = styled.div`
+  padding: 0 20px;
   width: 100%;
   height: 100%;
   display: flex;

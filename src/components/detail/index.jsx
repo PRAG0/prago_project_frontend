@@ -4,7 +4,7 @@ import CompareStore from '../../views/Compare';
 
 const DetailView = (props) => {
   const detail = (ev) => {
-    ev.preventDefault();
+
     props.handleDetail(null);
   }
   

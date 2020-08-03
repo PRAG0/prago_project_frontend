@@ -6,6 +6,7 @@ export const ItemBox = styled.div`
   padding: 20px;
   align-items: center;
   text-align: center;
+  border-radius: 10px;
   z-index: 9999;
   :hover {
     cursor: pointer;
@@ -25,8 +26,8 @@ export const ItemBox = styled.div`
     }
   }
   span {
-    display: inline-block;
-    width: 80%;
+    /* 한 줄 자르기 */ display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; /* 여러 줄 자르기 추가 스타일 */ white-space: normal; line-height: 1.2; height: 3.6em; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+
   }
 
   .delete {
